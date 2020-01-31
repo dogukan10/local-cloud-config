@@ -82,10 +82,12 @@ eureka:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 1
 
-hystrix:
+hystrix:        
   command:
     default:
       execution:
+        timeout:
+          enabled: false
         isolation:
           strategy: THREAD
           thread:
