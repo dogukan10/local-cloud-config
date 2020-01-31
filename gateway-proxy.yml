@@ -81,6 +81,9 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 1
+  default: 
+    semaphore:
+      maxSemaphores: 300  
 
 hystrix:
   command:
