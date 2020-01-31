@@ -92,3 +92,7 @@ hystrix:
           strategy: THREAD
           thread:
             timeoutInMilliseconds: 50000
+  threadpool:
+    default:
+      coreSize: 50
+      maxQueueSize: -1
