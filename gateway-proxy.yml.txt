@@ -1,0 +1,92 @@
+zuul:
+  routes:
+    frontend:
+      path: /frontend/**
+      serviceId: frontend-service
+    identity:
+      path: /identity/**
+      serviceId: identity-service
+      sensitiveHeaders:
+    catalog:
+      path: /catalog/**
+      serviceId: catalogue-service-srdc
+      sensitiveHeaders: Cookie,Set-Cookie
+    business-process:
+      path: /business-process/**
+      serviceId: business-process-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    data-channel:
+      path: /data-channel/**
+      serviceId: data-channel-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    delegation:
+      path: /delegation/**
+      serviceId: delegate-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    data-aggregation:
+      path: /data-aggregation/**
+      serviceId: data-aggregation-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    search:
+      path: /search/**
+      serviceId: catalog-search-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    tracking-analysis-service:
+      path: /tnt/**
+      serviceId: tracking-analysis-service
+      sensitiveHeaders: Cookie,Set-Cookie
+    trust:
+      path: /trust/**
+      serviceId: trust-service
+      sensitiveHeaders: Cookie,Set-Cookie 
+    index:
+      path: /index/**
+      serviceId: indexing-service
+      sensitiveHeaders:
+    frontend-fmp:
+      path: /fmp/frontend/**
+      serviceId: frontend-service-fmp
+    frontend-efactory:
+      path: /efactory/frontend/**
+      serviceId: frontend-service-efactory
+    frontend-efactory-efs:
+      path: /efs/frontend/**
+      serviceId: frontend-service-efs
+    indexing-service-efs:
+      path: /efsindex/**
+      serviceId: indexing-service-efs
+      sensitiveHeaders:
+    identity-v2:
+      path: /identity-v2/**
+      serviceId: identity-service-v2
+      sensitiveHeaders:
+   
+
+spring:
+  http:
+    multipart:
+     max-file-size: 1000MB
+     max-request-size: 1000MB
+
+
+---
+
+spring:
+  profiles: dev
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+  client:
+    initialInstanceInfoReplicationIntervalSeconds: 5
+    registryFetchIntervalSeconds: 1
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 50000
