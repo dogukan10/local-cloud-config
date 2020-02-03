@@ -74,6 +74,8 @@ spring:
 spring:
   profiles: dev
 
+ribbonIsolationStrategy: THREAD
+
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 2
@@ -81,17 +83,18 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 1
-  identity-service:
-    semaphore:
-      maxSemaphores: 30000
 
 hystrix:
   command:
     default:
       execution:
         isolation:
-          strategy: SEMAPHORE
-          semaphore:
-            maxConcurrentRequests: 300
-       
-                                  
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000
+        timeout: false
+  threadpool:
+    default:
+      coreSize: 250
+      maxQueueSize: -1      
+        
