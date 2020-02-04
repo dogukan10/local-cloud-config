@@ -89,7 +89,7 @@ hystrix:
         isolation:
           strategy: THREAD
           thread:
-            timeoutInMilliseconds: 50000    
+            timeoutInMilliseconds: 500000   
 
 zuul:
   eureka:
@@ -103,8 +103,8 @@ zuul:
       semaphore:
         maxSemaphores: 300
   host:
-    connect-timeout-millis: 100000
-    socket-timeout-millis: 100000
+    connect-timeout-millis: 1000000
+    socket-timeout-millis: 1000000
 ribbon:
   ReadTimeout: 1000000
   ConnectTimeout: 1000000
