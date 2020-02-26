@@ -92,6 +92,9 @@ hystrix:
             timeoutInMilliseconds: 500000   
 
 zuul:
+  ribbon-isolation-strategy: thread
+  threadPool:
+    useSeparateThreadPools: true
   eureka:
     identity-service:
       semaphore:
