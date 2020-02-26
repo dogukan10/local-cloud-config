@@ -89,7 +89,11 @@ hystrix:
         isolation:
           strategy: THREAD
           thread:
-            timeoutInMilliseconds: 500000   
+            timeoutInMilliseconds: 500000
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: -1          
 
 zuul:
   ribbon-isolation-strategy: thread
