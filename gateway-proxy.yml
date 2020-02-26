@@ -108,3 +108,5 @@ zuul:
 ribbon:
   ReadTimeout: 1000000
   ConnectTimeout: 1000000
+  MaxTotalHttpConnections: 1600
+  MaxConnectionsPerHost: 800
