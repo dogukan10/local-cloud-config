@@ -117,3 +117,6 @@ ribbon:
   ConnectTimeout: 1000000
   MaxTotalHttpConnections: 1600
   MaxConnectionsPerHost: 800
+netty:
+  client:
+    perServerWaterline: 300
