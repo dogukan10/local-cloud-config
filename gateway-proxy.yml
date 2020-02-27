@@ -60,7 +60,8 @@ zuul:
       path: /identity-v2/**
       serviceId: identity-service-v2
       sensitiveHeaders:
-   
+
+
 
 spring:
   http:
@@ -69,11 +70,14 @@ spring:
      max-request-size: 1000MB
 
 
+
+
 ---
+
 
 spring:
   profiles: dev
-           
+
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
@@ -81,9 +85,9 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 2
-    eureka-server-total-connections-per-host: 500
-    eureka-server-total-connections: 500
-    
+    eureka-server-total-connections-per-host: 300
+    eureka-server-total-connections: 300
+
 hystrix:
   command:
     default:
@@ -97,6 +101,7 @@ hystrix:
       coreSize: 500
       maxQueueSize: -1          
 
+
 zuul:
   ribbon-isolation-strategy: thread
   threadPool:
@@ -104,13 +109,13 @@ zuul:
   eureka:
     identity-service:
       semaphore:
-        maxSemaphores: 500 
+        maxSemaphores: 300 
     catalogue-service-srdc:
       semaphore:
-        maxSemaphores: 500 
+        maxSemaphores: 300 
     business-process-service:
       semaphore:
-        maxSemaphores: 500
+        maxSemaphores: 300
   host:
     connect-timeout-millis: 1000000
     socket-timeout-millis: 1000000
@@ -121,4 +126,4 @@ ribbon:
   MaxConnectionsPerHost: 800
 netty:
   client:
-    perServerWaterline: 500
+    perServerWaterline: 300
