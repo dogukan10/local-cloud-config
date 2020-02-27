@@ -81,6 +81,8 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 2
+    eureka-server-total-connections-per-host: 300
+    eureka-server-total-connections: 300
     
 hystrix:
   command:
@@ -120,3 +122,6 @@ ribbon:
 netty:
   client:
     perServerWaterline: 300
+logging:
+  level:
+    com.netflix: DEBUG
