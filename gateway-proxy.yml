@@ -85,8 +85,8 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 2
-    eureka-server-total-connections-per-host: 300
-    eureka-server-total-connections: 300
+    eureka-server-total-connections-per-host: 500
+    eureka-server-total-connections: 500
 
 hystrix:
   command:
@@ -109,13 +109,13 @@ zuul:
   eureka:
     identity-service:
       semaphore:
-        maxSemaphores: 300 
+        maxSemaphores: 500 
     catalogue-service-srdc:
       semaphore:
-        maxSemaphores: 300 
+        maxSemaphores: 500 
     business-process-service:
       semaphore:
-        maxSemaphores: 300
+        maxSemaphores: 500
   host:
     connect-timeout-millis: 1000000
     socket-timeout-millis: 1000000
@@ -126,4 +126,4 @@ ribbon:
   MaxConnectionsPerHost: 800
 netty:
   client:
-    perServerWaterline: 300
+    perServerWaterline: 500
