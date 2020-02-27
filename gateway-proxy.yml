@@ -60,14 +60,6 @@ zuul:
       path: /identity-v2/**
       serviceId: identity-service-v2
       sensitiveHeaders:
-    eclass-service:
-      path: /eclass/**
-      serviceId: eclass-service
-      sensitiveHeaders:
-    asset-registry-service:
-      path: /assetregistry/**
-      serviceId: assetregistry-service
-      sensitiveHeaders:
    
 
 spring:
@@ -81,7 +73,7 @@ spring:
 
 spring:
   profiles: dev
-
+           
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
@@ -89,7 +81,9 @@ eureka:
   client:
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 2
-
+    eureka-server-total-connections-per-host: 300
+    eureka-server-total-connections: 300
+    
 hystrix:
   command:
     default:
@@ -98,15 +92,22 @@ hystrix:
           strategy: THREAD
           thread:
             timeoutInMilliseconds: 500000
+  threadpool:
+    default:
+      coreSize: 500
+      maxQueueSize: -1          
 
 zuul:
+  ribbon-isolation-strategy: thread
+  threadPool:
+    useSeparateThreadPools: true
   eureka:
     identity-service:
       semaphore:
-        maxSemaphores: 300
+        maxSemaphores: 300 
     catalogue-service-srdc:
       semaphore:
-        maxSemaphores: 300
+        maxSemaphores: 300 
     business-process-service:
       semaphore:
         maxSemaphores: 300
@@ -116,3 +117,8 @@ zuul:
 ribbon:
   ReadTimeout: 1000000
   ConnectTimeout: 1000000
+  MaxTotalHttpConnections: 1600
+  MaxConnectionsPerHost: 800
+netty:
+  client:
+    perServerWaterline: 300
